@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(cors());
 // app.set('ejs', ejs.renderFile);
 
-const con = mysql.createConnection({
+const connection = mysql.createConnection({
   host: 'tatsuyadb.c0mbtloblzo0.ap-northeast-1.rds.amazonaws.com',
   user: 'tatsuya',
   password: 'zsEdcfTgb!1',
