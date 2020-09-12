@@ -18,24 +18,24 @@ const con = mysql.createConnection({
   database: 'aws_todo'
 });
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+// app.get('/', function (req, res) {
+//   res.send('Hello World!');
+// });
 
 // ルート（http://localhost/）にアクセスしてきたときに「Hello」を返す
-// app.get('/', (req, res) => connection.query('select * from title', function (error, results, fields) {
-//   if (error) throw error;
-//   res.send(results[0]);
-// }));
-// app.post('/', function (req, res) {
-//   res.send({
-//     message: req.body.text,
-//   });
-// });
-// app.post('/test', (req, res) => connection.query('select * from title', function (error, results, fields) {
-//   if (error) throw error;
-//   res.send(results[0]);
-// }));
+app.get('/', (req, res) => connection.query('select * from title', function (error, results, fields) {
+  if (error) throw error;
+  res.send(results[0]);
+}));
+app.post('/', function (req, res) {
+  res.send({
+    message: req.body.text,
+  });
+});
+app.post('/test', (req, res) => connection.query('select * from title', function (error, results, fields) {
+  if (error) throw error;
+  res.send(results[0]);
+}));
 
 // ポート3000でサーバを立てる
 app.listen(process.env.PORT || 3000, () =>
