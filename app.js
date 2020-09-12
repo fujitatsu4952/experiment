@@ -25,7 +25,7 @@ const connection = mysql.createConnection({
 // ルート（http://localhost/）にアクセスしてきたときに「Hello」を返す
 app.get('/', (req, res) => connection.query('select * from title', function (error, results, fields) {
   if (error) throw error;
-  res.send(results[0]);
+  res.send(results);
 }));
 app.post('/', function (req, res) {
   res.send({
