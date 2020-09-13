@@ -28,7 +28,9 @@ app.get('/', function (req, res) {
   const sql = "select * from todo"
   con.query(sql, function (err, result, fields) {
     if (err) throw err;
-    res.send(result)
+    res.send({
+      message: result,
+    });
   })
 });
 
