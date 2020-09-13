@@ -47,11 +47,10 @@ app.get('/insert', function (req, res) {
 
 
 app.post('/', function (req, res) {
-  const sql = "select * from todo"
   console.log(req.body.text)
+  const sql = `"INSERT INTO todo(idtodo,content,status) VALUES('８','${req.body.text}','done')"`
   con.query(sql, function (err, result, fields) {
     if (err) throw err;
-    console.log(result)
     res.send({
       message: result,
     });
