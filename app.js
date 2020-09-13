@@ -17,6 +17,11 @@ const connection = mysql.createConnection({
   password: 'zsEdcfTgb!1',
   database: 'mydb'
 });
+connection.connect(function (err) {
+  if (err) throw err;
+  console.log('Connected');
+});
+
 
 app.get('/', function (req, res) {
   res.send('Hello World!');
