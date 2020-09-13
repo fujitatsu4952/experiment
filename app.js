@@ -20,24 +20,27 @@ const con = mysql.createConnection({
 con.connect(function (err) {
   if (err) throw err;
   console.log('Connected');
-  const sql = "select * from todo"
-  con.query(sql, function (err, result, fields) {
-    if (err) throw err;
-    console.log(result)
-  });
 });
 
 
 
 app.get('/', function (req, res) {
-  res.send('Hello World!');
+  const sql = "select * from todo"
+  con.query(sql, function (err, result, fields) {
+    if (err) throw err;
+    res.send(result)
+  })
+});
+
+app.get('/insert', function (req, res) {
+  const sql = "INSERT INTO todo(idtodo,content,status) VALUES('1','work','done')"
+  con.query(sql, function (err, result, fields) {
+    if (err) throw err;
+    console.log(result)
+  })
 });
 
 // ルート（http://localhost/）にアクセスしてきたときに「Hello」を返す
-// app.get('/', (req, res) => connection.query('select * from title', function (error, results, fields) {
-//   if (error) throw error;
-//   res.send(results);
-// }));
 app.post('/', function (req, res) {
   res.send({
     message: req.body.text,
