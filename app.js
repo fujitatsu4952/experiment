@@ -48,7 +48,7 @@ app.get('/insert', function (req, res) {
 
 app.post('/', function (req, res) {
   const sql = "select * from todo"
-  console.log(req.body)
+  console.log(req.body.text)
   con.query(sql, function (err, result, fields) {
     if (err) throw err;
     console.log(result)
