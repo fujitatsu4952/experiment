@@ -32,7 +32,7 @@ app.get('/', function (req, res) {
   })
 });
 
-let num = 0
+let num = 4
 
 app.get('/insert', function (req, res) {
   num = num + 1
