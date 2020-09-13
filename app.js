@@ -36,7 +36,7 @@ let num = 4
 
 app.get('/insert', function (req, res) {
   num = num + 1
-  const sql = `"INSERT INTO todo(idtodo,content,status) VALUES(${num},'work','done')"`
+  const sql = `"INSERT INTO todo(idtodo,content,status) VALUES('5','work','done')"`
   con.query(sql, function (err, result, fields) {
     if (err) throw err;
     console.log(result)
