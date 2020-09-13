@@ -32,24 +32,24 @@ app.get('/', function (req, res) {
   })
 });
 
+let num = 0
+
 app.get('/insert', function (req, res) {
-  const sql = "INSERT INTO todo(idtodo,content,status) VALUES('1','work','done')"
+  num = num + 1
+  const sql = `"INSERT INTO todo(idtodo,content,status) VALUES(${num},'work','done')"`
   con.query(sql, function (err, result, fields) {
     if (err) throw err;
     console.log(result)
   })
 });
 
-// ルート（http://localhost/）にアクセスしてきたときに「Hello」を返す
+
 app.post('/', function (req, res) {
   res.send({
     message: req.body.text,
   });
 });
-app.post('/test', (req, res) => con.query('select * from title', function (error, results, fields) {
-  if (error) throw error;
-  res.send(results[0]);
-}));
+
 
 // ポート3000でサーバを立てる
 app.listen(process.env.PORT || 3000, () =>
