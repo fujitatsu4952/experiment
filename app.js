@@ -18,15 +18,15 @@ const connection = mysql.createConnection({
   database: 'mydb'
 });
 
-// app.get('/', function (req, res) {
-//   res.send('Hello World!');
-// });
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
 
 // ルート（http://localhost/）にアクセスしてきたときに「Hello」を返す
-app.get('/', (req, res) => connection.query('select * from title', function (error, results, fields) {
-  if (error) throw error;
-  res.send(results);
-}));
+// app.get('/', (req, res) => connection.query('select * from title', function (error, results, fields) {
+//   if (error) throw error;
+//   res.send(results);
+// }));
 app.post('/', function (req, res) {
   res.send({
     message: req.body.text,
