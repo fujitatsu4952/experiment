@@ -12,10 +12,10 @@ app.use(cors());
 // app.set('ejs', ejs.renderFile);
 
 const connection = mysql.createConnection({
-  host: 'tatsuyadb.c0mbtloblzo0.ap-northeast-1.rds.amazonaws.com',
+  host: 'miotyon.c0mbtloblzo0.ap-northeast-1.rds.amazonaws.com',
   user: 'tatsuya',
   password: 'zsEdcfTgb!1',
-  database: 'aws_todo'
+  database: 'mydb'
 });
 
 // app.get('/', function (req, res) {
