@@ -11,16 +11,22 @@ app.use(bodyParser.json());
 app.use(cors());
 // app.set('ejs', ejs.renderFile);
 
-const connection = mysql.createConnection({
+const con = mysql.createConnection({
   host: 'miotyon.c0mbtloblzo0.ap-northeast-1.rds.amazonaws.com',
   user: 'tatsuya',
   password: 'zsEdcfTgb!1',
   database: 'mydb'
 });
-connection.connect(function (err) {
+con.connect(function (err) {
   if (err) throw err;
   console.log('Connected');
+  const sql = "select * from todo"
+  con.query(sql, function (err, result, fields) {
+    if (err) throw err;
+    console.log(result)
+  });
 });
+
 
 
 app.get('/', function (req, res) {
@@ -37,7 +43,7 @@ app.post('/', function (req, res) {
     message: req.body.text,
   });
 });
-app.post('/test', (req, res) => connection.query('select * from title', function (error, results, fields) {
+app.post('/test', (req, res) => con.query('select * from title', function (error, results, fields) {
   if (error) throw error;
   res.send(results[0]);
 }));
